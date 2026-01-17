@@ -4,9 +4,9 @@ import { FileText, Calculator, TrendingUp, Shield, Clock, Users } from 'lucide-r
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-100 pt-20 pb-16">
+    <section className="relative overflow-hidden bg-linear-to-br from-blue-50 to-indigo-100 pt-20 pb-16">
       {/* Background decoration */}
-      <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,#fff,rgba(255,255,255,0.6))] -z-10"></div>
+      <div className="absolute inset-0 -z-10 opacity-30" style={{ backgroundImage: 'radial-gradient(circle, #e2e8f0 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
       
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">

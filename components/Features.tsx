@@ -106,7 +106,7 @@ export default function Features() {
         </div>
 
         {/* Why Choose Us Section */}
-        <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-12">
+        <div className="bg-linear-to-br from-blue-50 to-indigo-100 rounded-2xl p-12">
           <div className="text-center mb-12">
             <h3 className="text-3xl font-bold text-gray-900 mb-4">
               რატომ ვართ საუკეთესო არჩევანი?
