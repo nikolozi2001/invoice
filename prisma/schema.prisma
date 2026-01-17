@@ -6,6 +6,96 @@ datasource db {
   provider = "postgresql"
 }
 
+// User Management
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  
+  // Relations
+  companies Company[]
+  
+  @@map("users")
+}
+
+// Company/Business Entity
+model Company {
+  id         String  @id @default(cuid())
+  userId     String
+  name       String
+  vatEnabled Boolean @default(true)
+  taxId      String?
+  iban       String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  
+  // Relations
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  clients  Client[]
+  invoices Invoice[]
+  
+  @@map("companies")
+}
+
+// Client Management
+model Client {
+  id        String     @id @default(cuid())
+  companyId String
+  name      String
+  type      ClientType @default(INDIVIDUAL)
+  taxId     String?
+  email     String?
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  
+  // Relations
+  company  Company   @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  invoices Invoice[]
+  
+  @@map("clients")
+}
+
+// Invoice Management
+model Invoice {
+  id        String        @id @default(cuid())
+  companyId String
+  clientId  String
+  number    String        @unique
+  issueDate DateTime
+  dueDate   DateTime
+  subtotal  Decimal       @db.Decimal(10, 2)
+  vatAmount Decimal       @db.Decimal(10, 2)
+  total     Decimal       @db.Decimal(10, 2)
+  status    InvoiceStatus @default(DRAFT)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  
+  // Relations
+  company Company       @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  client  Client        @relation(fields: [clientId], references: [id], onDelete: Restrict)
+  items   InvoiceItem[]
+  
+  @@map("invoices")
+}
+
+// Invoice Line Items
+model InvoiceItem {
+  id          String  @id @default(cuid())
+  invoiceId   String
+  description String
+  quantity    Decimal @db.Decimal(10, 2)
+  price       Decimal @db.Decimal(10, 2)
+  total       Decimal @db.Decimal(10, 2)
+  createdAt   DateTime @default(now())
+  
+  // Relations
+  invoice Invoice @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  
+  @@map("invoice_items")
+}
+
+// Waitlist (keeping for backward compatibility)
 model WaitlistEntry {
   id           String   @id @default(cuid())
   email        String   @unique
@@ -15,4 +105,18 @@ model WaitlistEntry {
   updatedAt    DateTime @updatedAt
 
   @@map("waitlist_entries")
+}
+
+// Enums
+enum ClientType {
+  INDIVIDUAL
+  COMPANY
+}
+
+enum InvoiceStatus {
+  DRAFT
+  SENT
+  PAID
+  OVERDUE
+  CANCELLED
 }

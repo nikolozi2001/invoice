@@ -144,14 +144,20 @@ NODE_ENV="production"
 ## 📊 Database Schema
 
 ```prisma
-model WaitlistEntry {
-  id           String   @id @default(cuid())
-  email        String   @unique
-  businessName String?
-  businessType String?
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-}
+// Core Entities
+User           → Authentication & user management
+Company        → Business entities with VAT settings
+Client         → Customer management (individual/company)
+Invoice        → Invoice records with status tracking
+InvoiceItem    → Line items for invoices
+WaitlistEntry  → Pre-launch waitlist (backward compatibility)
+
+// Key Features
+- Multi-company support per user
+- Georgian VAT (18%) calculations
+- Client type differentiation
+- Invoice status workflow (Draft → Sent → Paid/Overdue)
+- Decimal precision for monetary values
 ```
 
 ## 🎨 Design System
