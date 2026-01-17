@@ -26,7 +26,7 @@ export default function Hero() {
             </h1>
             
             <p className="text-xl text-gray-600 mb-8 max-w-lg mx-auto lg:mx-0">
-              მართე შენი ბიზნესის ფინანსები ერთ პლატფორმაზე. ინვოისები, ღ.დ.ღ., და cash flow-ს 
+              მართე შენი ბიზნესის ფინანსები ერთ პლატფორმაზე. ინვოისები, დ.ღ.გ., და cash flow-ს 
               მენეჯმენტი საქართველოს კანონმდებლობის გათვალისწინებით.
             </p>
             
@@ -70,7 +70,7 @@ export default function Hero() {
                   </div>
                   <div className="text-right">
                     <div className="text-2xl font-bold text-green-600">₾2,340</div>
-                    <div className="text-sm text-gray-500">ღ.დ.ღ. ჩათვლით</div>
+                    <div className="text-sm text-gray-500">დ.ღ.გ. ჩათვლით</div>
                   </div>
                 </div>
                 
@@ -81,7 +81,7 @@ export default function Hero() {
                     <span className="font-semibold text-gray-900">₾1,800</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
-                    <span className="text-gray-700">ღ.დ.ღ. (18%)</span>
+                    <span className="text-gray-700">დ.ღ.გ. (18%)</span>
                     <span className="font-semibold text-gray-900">₾324</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
@@ -98,7 +98,7 @@ export default function Hero() {
                   </div>
                   <div className="flex items-center space-x-2 bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs">
                     <Calculator className="w-3 h-3" />
-                    <span>ღ.დ.ღ. გაანგარიშებული</span>
+                    <span>დ.ღ.გ. გაანგარიშებული</span>
                   </div>
                 </div>
               </div>
