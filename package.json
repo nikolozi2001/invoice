@@ -38,6 +38,7 @@
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx --fix",
     "lint:check": "eslint . --ext .ts,.tsx,.js,.jsx",
     "type-check": "tsc --noEmit",
+    "vercel:build": "prisma generate && prisma migrate deploy && next build",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
     "db:migrate:prod": "prisma migrate deploy",
